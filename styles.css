@@ -1,0 +1,87 @@
+/* Native SF on Apple platforms; local/system fallbacks elsewhere. */
+:root {
+  --font-text: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  --font-display: system-ui, "SF Pro", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --color-accent: #bda5ff;
+  color-scheme: dark;
+  font-family: var(--font-text);
+  font-optical-sizing: auto;
+  font-kerning: normal;
+  color: #f7f7fc;
+  background: #080a16;
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; text-decoration: none; }
+::selection { background: #8065e4; color: white; }
+:focus-visible { outline: 2px solid #cbb9ff; outline-offset: 6px; border-radius: 5px; }
+.scene { position: fixed; inset: 0; overflow: hidden; pointer-events: none; background: radial-gradient(ellipse at 85% 45%, #25204c88, transparent 55%), radial-gradient(ellipse at 35% 100%, #26105d66, transparent 65%), #080a16; }
+.scene::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #080a1633, transparent 70%), linear-gradient(0deg, #080a16b0, transparent 22%); }
+canvas { display: block; width: 100%; height: 100%; opacity: .8; }
+.page { position: relative; max-width: 1600px; min-height: 100svh; margin: auto; padding: 38px clamp(24px, 6.2vw, 100px) 30px; display: flex; flex-direction: column; }
+main { flex: 1; display: flex; align-items: center; }
+.hero { width: 100%; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; gap: 10px; padding: 65px 0 75px; }
+.intro { position: relative; z-index: 2; }
+h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(44px, 5.25vw, 80px);
+  font-weight: 700;
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  letter-spacing: -.035em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+h1 > span { display: block; }
+h1 .greeting { color: var(--color-accent); font-size: clamp(24px, 2.4vw, 36px); font-weight: 500; font-stretch: normal; font-variation-settings: normal; letter-spacing: -.025em; line-height: 1.25; margin-bottom: 20px; }
+h1 em { font-style: normal; background: linear-gradient(110deg, #c1b3ff 5%, #e3b5f1 65%, #f6c4b9); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.platforms { font-family: var(--font-mono); font-weight: 500; display: flex; gap: 15px; margin: 28px 0 35px; color: #c0bed3; font-size: 15px; letter-spacing: -.015em; }
+.platforms span { color: #77728b; }
+.contact { display: flex; align-items: center; gap: 18px; }
+.hello { display: inline-flex; align-items: center; justify-content: center; gap: 26px; min-height: 50px; padding: 0 21px; border-radius: 100px; background: #f2efff; color: #181323; font-weight: 600; font-size: 15px; letter-spacing: -.015em; box-shadow: 0 3px 20px #0002, inset 0 1px 0 #fff; transition: background .2s, box-shadow .2s; }
+.hello:hover { background: white; box-shadow: 0 0 30px #c6adff44; }
+.hello svg { width: 19px; height: 19px; stroke: currentColor; stroke-width: 1.6; fill: none; }
+.portrait-scene { position: relative; display: grid; place-items: center; isolation: isolate; min-width: 0; perspective: 1000px; }
+.portrait-scene::before { content: ""; position: absolute; width: 88%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(ellipse, #6b44c32b, #6b44c30a 60%, transparent 72%); z-index: -1; }
+.portrait { width: 110%; max-width: 570px; position: relative; will-change: transform; transform-origin: 50% 55%; -webkit-mask-image: linear-gradient(#000 74%, transparent 99%); mask-image: linear-gradient(#000 74%, transparent 99%); }
+.portrait img { display: block; width: 100%; height: auto; user-select: none; }
+.visor-light { position: absolute; left: 25%; top: 18%; width: 53%; height: 30%; border-radius: 45%; background: radial-gradient(ellipse at var(--light-x, 50%) var(--light-y, 35%), #d1c6ff23, transparent 60%); mix-blend-mode: screen; pointer-events: none; }
+.orbit { position: absolute; width: 109%; height: 43%; border: 1px solid #ae9ded18; border-radius: 50%; z-index: -1; transform: rotate(-28deg); }
+.orbit-two { width: 87%; height: 108%; transform: rotate(27deg); border-color: #ae9ded0d; }
+
+
+
+.socials { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 28px; }
+.socials a { display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; color: #e4dcf8; background: transparent; transition: background .2s, color .2s; }
+.socials a:hover, .socials a:focus-visible { color: white; background: #b4a3ff20; }
+.socials svg { width: 25px; height: 25px; fill: currentColor; }
+@media (min-width: 1600px) { .hero { gap: 60px; } }
+@media (max-width: 1050px) { .hero { gap: 24px; }  }
+@media (max-width: 700px) {
+  .page { padding: 25px 24px 20px; }
+  .hero { grid-template-columns: 1fr; gap: 22px; padding: 62px 0 38px; text-align: center; }
+  h1 { font-size: clamp(42px, 8.8vw, 64px); }
+  h1 .greeting { font-size: 26px; }
+  .platforms { justify-content: center; gap: clamp(6px, 2vw, 12px); font-size: clamp(12px, 3.5vw, 14px); margin: 23px 0 26px; }
+  .contact { justify-content: center; }
+  .portrait-scene { width: min(85%, 380px); margin: 0 auto; }
+  .portrait { width: 100%; }
+
+  .socials { justify-content: center; gap: 8px; margin-top: 24px; }
+}
+@media (max-width: 370px) { .page { padding-inline: 18px; } .hero { padding-top: 45px; } h1 { font-size: 40px; }   }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+/* Perspective and decorative orbits may extend beyond the composition. */
+.page { overflow-x: clip; }
+
+/* A small maker's signature in document flow, never covering the hero. */
+.site-footer { display: flex; justify-content: flex-end; flex-shrink: 0; padding-top: 8px; }
+.signature { width: 106px; flex: 0 0 106px; text-align: center; }
+.signature-script { display: block; width: 70%; margin-inline: auto; height: auto; color: var(--color-accent); overflow: visible; }
+.signature-name { display: block; font-family: var(--font-display); font-size: 21.25px; font-weight: 700; font-stretch: 125%; font-variation-settings: "wdth" 125; letter-spacing: -.035em; line-height: 1.1; }
+.signature-stroke { stroke-dasharray: 1; stroke-dashoffset: 0; }
+
+@media (max-width: 700px) { .site-footer { justify-content: center; } }
