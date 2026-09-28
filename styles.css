@@ -77,11 +77,15 @@ h1 em { font-style: normal; background: linear-gradient(110deg, #c1b3ff 5%, #e3b
 /* Perspective and decorative orbits may extend beyond the composition. */
 .page { overflow-x: clip; }
 
-/* A small maker's signature in document flow, never covering the hero. */
-.site-footer { display: flex; justify-content: flex-end; flex-shrink: 0; padding-top: 8px; }
-.signature { width: 106px; flex: 0 0 106px; text-align: center; }
-.signature-script { display: block; width: 70%; margin-inline: auto; height: auto; color: var(--color-accent); overflow: visible; }
+/* A small maker's signature at the top left, in document flow. */
+.site-header { display: flex; justify-content: flex-start; flex-shrink: 0; }
+.signature { width: 106px; flex: 0 0 106px; text-align: left; }
+.signature-script { display: block; width: 70%; margin: 0 0 -4px; height: auto; color: var(--color-accent); overflow: visible; }
 .signature-name { display: block; font-family: var(--font-display); font-size: 21.25px; font-weight: 700; font-stretch: 125%; font-variation-settings: "wdth" 125; letter-spacing: -.035em; line-height: 1.1; }
 .signature-stroke { stroke-dasharray: 1; stroke-dashoffset: 0; }
 
-@media (max-width: 700px) { .site-footer { justify-content: center; } }
+@media (max-width: 700px) {
+  .site-header { justify-content: center; }
+  .signature { text-align: center; }
+  .signature-script { margin-inline: auto; }
+}

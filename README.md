@@ -40,6 +40,6 @@ Final image-edit prompt:
 
 Checked in local Chrome: responsive widths from 320 to 1440 CSS pixels, landscape and a viewport equivalent to 200% browser zoom, image loading, contact URLs, pointer tracking and reset, reduced-motion preference changes, simulated document visibility changes, touch scrolling, and the no-JavaScript fallback. No JavaScript console errors. Real iOS/Safari device behavior should be checked before broad release.
 
-## Footer signature
+## Header signature
 
-The 106px footer badge pairs original SVG monoline lettering with an SF wordmark. The two centerline paths write “made” and “by” in sequence, hold for nine seconds, then fade and restart on a 14-second cycle. It shares the existing animation clock and pauses in hidden tabs. Reduced-motion preferences and the no-JavaScript fallback show the complete signature. The script is 70% of the badge width; the badge sits at the bottom right on desktop and is centered on mobile. The greeting remains unchanged.
+The 106px header badge pairs original SVG monoline lettering with an SF wordmark. The two centerline paths write “made” and “by” in sequence, hold for nine seconds, then fade and restart on a 14-second cycle. It shares the existing animation clock and pauses in hidden tabs. Reduced-motion preferences and the no-JavaScript fallback show the complete signature. The script is 70% of the badge width; the badge sits at the top left on desktop with left-aligned script, and both the badge and script are centered on mobile. Spacing above the wordmark is tightened. The greeting remains unchanged.
